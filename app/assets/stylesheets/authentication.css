@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+}
+
+.opti-login-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 320px;
+}
+
+.opti-login-title {
+    margin-bottom: 20px;
+    color: #8c52ff;
+}
+
+.opti-login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.opti-input {
+    width: 95%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.opti-login-button {
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.opti-login-button:hover {
+    opacity: 0.8;
+}

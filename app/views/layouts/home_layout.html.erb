@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>optiStock</title>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <nav class="opti-navbar">
+        <div class="opti-logo">optiStock</div>
+        <ul class="opti-nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+ <%= yield %>
+</body>
+</html> 
