@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag 'home', media: 'all' %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <nav class="opti-navbar">
+        <div class="opti-logo">optiStock</div>
+        <ul class="opti-nav-links">
+            <li><%= link_to "Dashboard", '/users/dashboard' %></li>
+            <li><%= link_to "Logout", '/users/logout' %></li>
+            
+        </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

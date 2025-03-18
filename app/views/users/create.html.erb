@@ -1,0 +1,52 @@
+<div class="os-user-form-container">
+    <h2 class="os-user-form-title">Create New User</h2>
+
+    <%= form_with model: @user, url: '/users/create', method: :post, class: "os-user-form" do |form| %>
+        <!-- Username -->
+        <div class="os-form-group">
+            <%= form.label :username, "Username", class: "os-form-label" %>
+            <%= form.text_field :username, class: "os-form-input", placeholder: "Enter username" %>
+        </div>
+
+        <!-- Email -->
+        <div class="os-form-group">
+            <%= form.label :email, "Email", class: "os-form-label" %>
+            <%= form.email_field :email, class: "os-form-input", placeholder: "Enter email" %>
+        </div>
+
+        <!-- Mobile -->
+        <div class="os-form-group">
+            <%= form.label :mobile, "Mobile", class: "os-form-label" %>
+            <%= form.text_field :mobile, class: "os-form-input", placeholder: "Enter mobile number" %>
+        </div>
+
+        <!-- Password -->
+        <div class="os-form-group">
+            <%= form.label :password, "Password", class: "os-form-label" %>
+            <%= form.password_field :password, class: "os-form-input", placeholder: "Enter password" %>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="os-form-group">
+            <%= form.label :password_confirmation, "Confirm Password", class: "os-form-label" %>
+            <%= form.password_field :password_confirmation, class: "os-form-input", placeholder: "Confirm password" %>
+        </div>
+
+        <!-- Department Dropdown -->
+        <div class="os-form-group">
+            <%= form.label :department_id, "Department", class: "os-form-label" %>
+            <%= form.select :department_id, options_from_collection_for_select(@departments, :id, :name), { prompt: "Select Department" }, class: "os-form-input" %>
+        </div>
+
+        <!-- Role Dropdown -->
+        <div class="os-form-group">
+            <%= form.label :role_description_id, "Role", class: "os-form-label" %>
+            <%= form.select :role_description_id, options_from_collection_for_select(@roles, :id, :name), { prompt: "Select Role" }, class: "os-form-input" %>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="os-form-group">
+            <%= form.submit "Create User", class: "os-form-submit-button" %>
+        </div>
+    <% end %>
+</div>

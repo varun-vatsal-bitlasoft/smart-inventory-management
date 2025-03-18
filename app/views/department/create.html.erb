@@ -1,0 +1,22 @@
+<div class="os-department-form-container">
+    <h2 class="os-department-form-title">Create New Department</h2>
+
+    <%= form_with model: @department, url: '/department/create', method: :post, class: "os-department-form" do |form| %>
+        <!-- Name -->
+        <div class="os-form-group">
+            <%= form.label :name, "Department Name", class: "os-form-label" %>
+            <%= form.text_field :name, class: "os-form-input", placeholder: "Enter department name" %>
+        </div>
+
+        <!-- Description -->
+        <div class="os-form-group">
+            <%= form.label :description, "Description", class: "os-form-label" %>
+            <%= form.text_area :description, class: "os-form-textarea", placeholder: "Enter description" %>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="os-form-group">
+            <%= form.submit "Create Department", class: "os-form-submit-button" %>
+        </div>
+    <% end %>
+</div>

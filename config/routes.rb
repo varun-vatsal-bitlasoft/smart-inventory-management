@@ -15,6 +15,26 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get 'users/login'
+  post 'users/login', to: "users#login"
   get 'users/dashboard'
-  post 'users/login'
+  get 'users/logout', to: "users#logout"
+  get 'users/show'
+  get 'users/create'
+  post 'users/create', to: "users#create"
+  get 'users/delete/:id', to: "users#delete", as: "user_delete"
+  get 'users/update/:id', to: "users#update", as: "user_update_show"
+  post 'users/update/:id', to: "users#update", as: "user_update"
+  
+
+  get 'department/show'
+  get 'department/create'
+  post 'department/create', to: "department#create"
+
+  get 'role_description/show'
+  get 'role_description/create'
+  post 'role_description/create', to: "role_description#create"
+ 
+
+
+  root "users#login"
 end

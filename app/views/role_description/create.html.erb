@@ -1,0 +1,46 @@
+<div class="os-role-form-container">
+  <h2 class="os-role-form-title">Create Role</h2>
+
+  <%= form_with model: @role_description, url: '/role_description/create', method: :post, class: "os-role-form" do |form| %>
+    
+    <!-- Role Name Input -->
+    <div class="os-form-group">
+      <%= form.label :name, "Role Name", class: "os-form-label" %>
+      <%= form.text_field :name, class: "os-form-input", placeholder: "Enter Role Name" %>
+    </div>
+
+    <!-- Permissions for Each Department -->
+    <div class="os-department-section">
+      <h3 class="os-section-title">Assign Permissions</h3>
+      <% @departments.each do |department| %>
+        <div class="os-department-container">
+          <h4 class="os-department-name"><%= department.name %></h4>
+          
+          <div class="os-checkbox-group">
+          <label class="os-checkbox-label">
+            <%= check_box_tag "permissions[#{department.id}][create]", true, false, class: "os-checkbox" %> Create
+          </label>
+          
+          <label class="os-checkbox-label">
+            <%= check_box_tag "permissions[#{department.id}][read]", true, false, class: "os-checkbox" %> Read
+          </label>
+          
+          <label class="os-checkbox-label">
+            <%= check_box_tag "permissions[#{department.id}][update]", true, false, class: "os-checkbox" %> Update
+          </label>
+          
+          <label class="os-checkbox-label">
+            <%= check_box_tag "permissions[#{department.id}][delete]", true, false, class: "os-checkbox" %> Delete
+          </label>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="os-form-group">
+      <%= form.submit "Create Role", class: "os-submit-button" %>
+    </div>
+    
+  <% end %>
+</div>

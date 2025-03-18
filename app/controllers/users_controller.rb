@@ -1,27 +1,110 @@
+# require 'json'
+
 class UsersController < ApplicationController
 
   layout :choose_layout
-  
+  before_action :authenticate_user?, only: [:dashboard, :show]
+  before_action :user_permission?, only: [:create, :delete, :show, :update]
 
   def login 
+    if request.post?
+      user = User.find_by(username: params[:username])
+      if user.nil?
+        flash[:alert] = "user does not exists"
+        redirect_to :controller => :users, :action => :login
+      end
+
+      if user&.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to :controller => :users, :action => :dashboard, notice: "Logged in successfully!"
+      else 
+        flash[:alert] = "invalid username or password"
+        redirect_to :controller => :users, :action => :login  
+      end
+
+    end
   end
 
   def logout
+    session[:user_id] = nil
+    flash[:alert] = "Logged out!"
+    redirect_to :controller => :users, :action => :login
   end
 
   def dashboard
+  end
+
+  def create 
+    @departments = Department.all 
+    @roles = RoleDescription.all
+    @user = User.new
+    if request.post?
+      user = User.create(username: params[:user][:username], email: params[:user][:email], mobile: params[:user][:mobile], password: params[:user][:password], password_confirmation: params[:user][:confirm_password], department_id: params[:user][:department_id], role_description_id: params[:user][:role_description_id])
+
+      if user.valid? 
+        redirect_to :controller => :users, :action => :show, notice: "user created"
+      else
+        Rails.logger.error user.errors
+        redirect_to :controller => :users, :action => :create, notice: "pass a valid user"
+      end
+    end
+  end
+
+  def update 
+    @user = User.find_by(id: session[:user_id])
+    @departments = Department.all 
+    @roles = RoleDescription.all
+    if request.post?
+        res = @user.update(username: params[:username], email: params[:email], mobile: params[:mobile], password: params[:password], password_confirmation: params[:confirm_password], department_id: params[:department_id], role_description_id: params[:role_description_id])
+
+        if res 
+          redirect_to :controller => :users, :action => :show, notice: "user created"
+        else
+          redirect_to :controller => :users, :action => :update, notice: "pass a valid user"
+        end
+    end
+  end
+
+  def delete 
+    id = params[:id]
+    user = User.find_by(id: id)
+    user.delete
+    redirect_to :controller => :users, :action => :show
+  end
+
+  def show
+    @users = User.all
   end
 
   private 
 
   def choose_layout
     case action_name
-    when "dashboard"
+    when "dashboard", "show", "create"
       "home_layout"
     when "login"
       "authentication_layout"
     end
   end
+
+  def authenticate_user?
+    if session[:user_id].nil?
+      flash[:notice] = "you need to login as a admin to continue"
+      redirect_to :controller => :users, :action => :login
+    end
+  end
+
+  def user_permission?
+    authenticate_user?
+    role_description_id = User.find_by(id: session[:user_id]).role_description_id
+
+    privilege = JSON.parse(RoleDescription.find(role_description_id).privilege)
+
+    if !privilege['department'].has_key?('all')
+      redirect_to :controller => :users, :action => :dashboard, notice: "you dont have permission to modify users"
+    end
+    
+  end 
 
 end
 

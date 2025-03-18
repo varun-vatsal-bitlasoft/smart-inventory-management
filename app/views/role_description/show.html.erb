@@ -1,0 +1,20 @@
+<div class="os-create-button-container">
+    <%= link_to "Create New role", '/role_description/create', class: "os-create-button" %>
+</div>
+
+<table class="os-role-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Role Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @role_descriptions.each do |role| %>
+      <tr>
+        <td><%= role.id %></td>
+        <td><%= role.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

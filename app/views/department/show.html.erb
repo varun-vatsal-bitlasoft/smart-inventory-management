@@ -1,0 +1,28 @@
+
+<div class="os-department-table-container">
+    <h2 class="os-department-table-title">Departments</h2>
+    
+    <table class="os-department-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @departments.each do |department| %>
+                <tr>
+                    <td><%= department.id %></td>
+                    <td><%= department.name %></td>
+                    <td><%= department.description %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class="os-create-button-container">
+        <%= link_to "Create New Department", '/department/create', class: "os-create-button" %>
+    </div>
+
+</div>

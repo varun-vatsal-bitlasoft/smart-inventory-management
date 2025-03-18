@@ -1,0 +1,35 @@
+<div class="os-create-button-container">
+    <%= link_to "Create New User", '/users/create', class: "os-create-button" %>
+</div>
+
+
+<table class="os-user-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Department</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= user.mobile %></td>
+                <td><%= Department.find(user.department_id).name %></td>
+                <td><%= RoleDescription.find(user.role_description_id).name %></td>
+                <td>
+                    <%= link_to "Edit", '/users/update', class: "os-edit-button" %>
+                    <%= link_to "Delete", user_delete_path(id: user.id), class: "os-delete-button" %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

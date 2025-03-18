@@ -1,22 +1,21 @@
-<div class="opti-login-container">
-    <h2 class="opti-login-title">Login to optiStock</h2>
-     <%= form_with  url: "/admin/login", class: "opti-login-form",method: :post do |form| %>
-        <div>
-            <%= form.label :username%>
-            <%= form.text_field :username, class: "opti-input", placeholder: "username" %>
-        </div>
-        <br/>
-
-        <div>
-            <%= form.label :password%>
-            <%= form.password_field :password, class: "opti-input", placeholder: "password" %>
-        </div>
-        <br/>
-
-        <div>
-            <%= form.submit "Login", class: "opti-login-button"%>
-        </div>
-        <br/>
-    <% end %>
-</div>
-
+<body class="os-login-page">
+    <div class="os-login-container">
+        <h2 class="os-login-title">Login to optiStock</h2>
+        <%= form_with url: "/users/login", class: "os-login-form", method: :post do |form| %>
+            <div>
+                <%= form.label :username %>
+                <%= form.text_field :username, class: "os-input", placeholder: "username" %>
+            </div>
+            <br/>
+            <div>
+                <%= form.label :password %>
+                <%= form.password_field :password, class: "os-input", placeholder: "password" %>
+            </div>
+            <br/>
+            <div>
+                <%= form.submit "Login", class: "os-login-button" %>
+            </div>
+            <br/>
+        <% end %>
+    </div>
+</body>

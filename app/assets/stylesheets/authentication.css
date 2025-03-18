@@ -1,14 +1,14 @@
-body {
+.os-login-page {
     margin: 0;
     font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    height: 100vh; /* Ensures full height */
 }
 
-.opti-login-container {
+.os-login-container {
     background: white;
     padding: 30px;
     border-radius: 10px;
@@ -17,17 +17,18 @@ body {
     width: 320px;
 }
 
-.opti-login-title {
+
+.os-login-title {
     margin-bottom: 20px;
     color: #8c52ff;
 }
 
-.opti-login-form {
+.os-login-form {
     display: flex;
     flex-direction: column;
 }
 
-.opti-input {
+.os-input {
     width: 95%;
     padding: 10px;
     margin: 8px 0;
@@ -36,7 +37,7 @@ body {
     font-size: 16px;
 }
 
-.opti-login-button {
+.os-login-button {
     background: linear-gradient(to right, #8c52ff, #5ce1e6);
     color: white;
     border: none;
@@ -48,6 +49,6 @@ body {
     transition: opacity 0.3s ease-in-out;
 }
 
-.opti-login-button:hover {
+.os-login-button:hover {
     opacity: 0.8;
 }
