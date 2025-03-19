@@ -1,0 +1,28 @@
+<br/>
+<br/>
+
+<%= form_with model: @product_transactions, url: product_transactions_create_path, method: :post, class: "os-product-transaction-form" do |form| %>
+  <div class="os-form-group">
+    <%= form.label :size, "Size" %>
+    <%= form.number_field :size, class: "os-input", placeholder: "Enter size" %>
+  </div>
+
+  <div class="os-form-group">
+    <%= form.label :transaction_date, "Transaction Date" %>
+    <%= form.date_field :transaction_date, class: "os-input" %>
+  </div>
+
+  <div class="os-form-group">
+    <%= form.label :price, "Price" %>
+    <%= form.number_field :price, class: "os-input", placeholder: "Enter price" %>
+  </div>
+
+  <div class="os-form-group os-checkbox-group">
+    <%= form.label :in_going, "Incoming Transaction" %>
+    <%= form.check_box :in_going, class: "os-checkbox" %>
+  </div>
+
+  <div class="os-form-group">
+    <%= form.submit "Create Transaction", class: "os-submit-btn" %>
+  </div>
+<% end %>

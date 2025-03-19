@@ -753,3 +753,124 @@ body {
 .os-create-transaction-btn:hover {
     opacity: 0.8;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.os-product-transaction-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+}
+
+.os-form-group {
+    margin-bottom: 15px;
+}
+
+.os-form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #8c52ff;
+}
+
+.os-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.os-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.os-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+.os-submit-btn {
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.os-submit-btn:hover {
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.os-product-transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.os-product-transaction-table th, 
+.os-product-transaction-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.os-product-transaction-table th {
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    color: white;
+    font-weight: bold;
+}
+
+.os-product-transaction-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.os-product-transaction-table tr:hover {
+    background-color: #e6f7ff;
+}
+
+.os-product-transaction-table td:nth-child(5) {
+    font-weight: bold;
+    color: #8c52ff;
+}

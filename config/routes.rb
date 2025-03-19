@@ -42,5 +42,9 @@ Rails.application.routes.draw do
   post "inventories/create/:id", to: "inventories#create", as: "inventories_create"
   get "inventories/show"
 
+  get "product_transactions/create_form/:id", to: "product_transactions#create_form", as: "product_transactions_create_form"
+  post "product_transactions/create/:id", to: "product_transactions#create", as: "product_transactions_create"
+  get "product_transactions/show"
+
   root "users#login"
 end

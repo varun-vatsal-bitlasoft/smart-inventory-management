@@ -18,7 +18,7 @@
         <td><%= number_to_currency(inventory.price) %></td>
         <td><%= inventory.product.name if inventory.product %></td>
         <td>
-          <%= link_to "Create Transaction", "/users/dashboard", class: "os-create-transaction-btn" %>
+          <%= link_to "Create Transaction", product_transactions_create_form_path(id: inventory.id) , class: "os-create-transaction-btn" %>
         </td>
       </tr>
     <% end %>

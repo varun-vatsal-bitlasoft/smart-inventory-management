@@ -1,2 +1,26 @@
-<h1>ProductTransactions#show</h1>
-<p>Find me in app/views/product_transactions/show.html.erb</p>
+<table class="os-product-transaction-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Size</th>
+      <th>Transaction Date</th>
+      <th>Price</th>
+      <th>In/Out</th>
+      <th>Product</th>
+      <th>Inventory ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product_transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.id %></td>
+        <td><%= transaction.size %></td>
+        <td><%= transaction.transaction_date %></td>
+        <td><%= number_to_currency(transaction.price) %></td>
+        <td><%= transaction.in_going ? "Incoming" : "Outgoing" %></td>
+        <td><%= transaction.product.name if transaction.product %></td>
+        <td><%= transaction.inventory_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
