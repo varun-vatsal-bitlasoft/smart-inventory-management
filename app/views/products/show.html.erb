@@ -1,2 +1,35 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<div class="os-create-button-container">
+    <%= link_to "Create New Product", '/products/create_form', class: "os-create-button" %>
+</div>
+
+
+<div class="os-product-table-container">
+  <h2 class="os-product-table-title">Product List</h2>
+
+  <table class="os-product-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price ($)</th>
+        <th>Department</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td>$<%= product.price %></td>
+          <td><%= Department.find(product.department_id).name %></td>
+          <td>
+            <%= link_to "Create Inventory", "/users/dashboard", class: "os-create-inventory-btn" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

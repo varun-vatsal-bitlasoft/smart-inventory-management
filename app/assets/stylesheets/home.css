@@ -468,3 +468,155 @@ body {
 .os-submit-button:hover {
     opacity: 0.8;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Form Container */
+.os-product-form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Title */
+.os-product-form-title {
+    text-align: center;
+    font-size: 22px;
+    color: #5e35b1;
+    margin-bottom: 20px;
+}
+
+/* Form Group */
+.os-form-group {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.os-form-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+.os-form-input, .os-form-textarea, .os-form-select {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Textarea */
+.os-form-textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* Submit Button */
+.os-submit-button {
+    width: 100%;
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.os-submit-button:hover {
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Table Container */
+.os-product-table-container {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Title */
+.os-product-table-title {
+    font-size: 24px;
+    color: #5e35b1;
+    margin-bottom: 15px;
+}
+
+/* Table */
+.os-product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.os-product-table th,
+.os-product-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Table Header */
+.os-product-table th {
+    background: #8c52ff;
+    color: white;
+    font-size: 16px;
+}
+
+/* Alternate Row Color */
+.os-product-table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Button */
+.os-create-inventory-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.os-create-inventory-btn:hover {
+    opacity: 0.8;
+}

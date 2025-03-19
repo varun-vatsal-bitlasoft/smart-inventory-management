@@ -1,0 +1,34 @@
+<div class="os-product-form-container">
+  <h2 class="os-product-form-title">Create New Product</h2>
+
+  <%= form_with model: @product, url: "/products/create", method: :post, class: "os-product-form" do |form| %>
+    
+    <div class="os-form-group">
+      <%= form.label :name, "Product Name", class: "os-form-label" %>
+      <%= form.text_field :name, class: "os-form-input", placeholder: "Enter product name" %>
+    </div>
+
+    <div class="os-form-group">
+      <%= form.label :description, "Description", class: "os-form-label" %>
+      <%= form.text_area :description, class: "os-form-textarea", placeholder: "Enter product description" %>
+    </div>
+
+    <div class="os-form-group">
+      <%= form.label :price, "Price ($)", class: "os-form-label" %>
+      <%= form.number_field :price, class: "os-form-input", min: 0, placeholder: "Enter price" %>
+    </div>
+
+    <div class="os-form-group">
+      <%= form.label :department_id, "Department", class: "os-form-label" %>
+      <%= form.select :department_id, 
+            @department.is_a?(Department) ? [[@department.name, @department.id]] : @department.map { |d| [d.name, d.id] },
+            { prompt: "Select Department" },
+            class: "os-form-select" %>
+    </div>
+
+    <div class="os-form-group">
+      <%= form.submit "Create Product", class: "os-submit-button" %>
+    </div>
+
+  <% end %>
+</div>

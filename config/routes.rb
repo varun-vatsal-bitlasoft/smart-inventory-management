@@ -34,7 +34,9 @@ Rails.application.routes.draw do
   get 'role_description/create'
   post 'role_description/create', to: "role_description#create"
  
-
+  get "products/show"
+  get "products/create_form"
+  post "products/create", to: "products#create"
 
   root "users#login"
 end
