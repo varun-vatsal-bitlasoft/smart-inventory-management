@@ -26,7 +26,7 @@
           <td>$<%= product.price %></td>
           <td><%= Department.find(product.department_id).name %></td>
           <td>
-            <%= link_to "Create Inventory", "/users/dashboard", class: "os-create-inventory-btn" %>
+            <%= link_to "Create Inventory", inventories_create_form_path(id: product.id), class: "os-create-inventory-btn" %>
           </td>
         </tr>
       <% end %>

@@ -620,3 +620,136 @@ body {
 .os-create-inventory-btn:hover {
     opacity: 0.8;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Form Container */
+.os-inventory-form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+/* Title */
+.os-inventory-form-title {
+    text-align: center;
+    font-size: 22px;
+    color: #5e35b1;
+    margin-bottom: 20px;
+}
+
+/* Form Group */
+.os-form-group {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.os-form-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+.os-form-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Submit Button */
+.os-submit-button {
+    width: 100%;
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.os-submit-button:hover {
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.os-inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.os-inventory-table th, .os-inventory-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.os-inventory-table th {
+    background: linear-gradient(to right, #8c52ff, #5ce1e6);
+    color: white;
+}
+
+.os-inventory-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.os-inventory-table tr:hover {
+    background-color: #e6f7ff;
+}
+
+.os-create-transaction-btn {
+    background: linear-gradient(to right, #5ce1e6, #8c52ff);
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.os-create-transaction-btn:hover {
+    opacity: 0.8;
+}

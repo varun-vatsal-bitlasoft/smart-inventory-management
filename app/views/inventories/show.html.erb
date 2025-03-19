@@ -1,2 +1,26 @@
-<h1>Inventories#show</h1>
-<p>Find me in app/views/inventories/show.html.erb</p>
+<table class="os-inventory-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Size</th>
+      <th>Expiry</th>
+      <th>Price</th>
+      <th>Product</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventories.each do |inventory| %>
+      <tr>
+        <td><%= inventory.id %></td>
+        <td><%= inventory.size %></td>
+        <td><%= inventory.expiry %></td>
+        <td><%= number_to_currency(inventory.price) %></td>
+        <td><%= inventory.product.name if inventory.product %></td>
+        <td>
+          <%= link_to "Create Transaction", "/users/dashboard", class: "os-create-transaction-btn" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

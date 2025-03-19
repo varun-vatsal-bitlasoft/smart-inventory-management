@@ -1,0 +1,26 @@
+<div class="os-inventory-form-container">
+  <h2 class="os-inventory-form-title">Create New Inventory</h2>
+
+  <%= form_with model: @inventory, url: inventories_create_path, method: :post, class: "os-inventory-form" do |form| %>
+    
+    <div class="os-form-group">
+      <%= form.label :size, "Size", class: "os-form-label" %>
+      <%= form.number_field :size, class: "os-form-input", min: 1, placeholder: "Enter size" %>
+    </div>
+
+    <div class="os-form-group">
+      <%= form.label :expiry, "Expiry Date", class: "os-form-label" %>
+      <%= form.date_field :expiry, class: "os-form-input" %>
+    </div>
+
+    <div class="os-form-group">
+      <%= form.label :price, "Price ($)", class: "os-form-label" %>
+      <%= form.number_field :price, class: "os-form-input", min: 0, placeholder: "Enter price" %>
+    </div>
+
+    <div class="os-form-group">
+      <%= form.submit "Create Inventory", class: "os-submit-button" %>
+    </div>
+
+  <% end %>
+</div>
