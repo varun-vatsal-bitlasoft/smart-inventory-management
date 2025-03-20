@@ -51,7 +51,7 @@ class RoleDescriptionController < ApplicationController
   end
 
   def user_permission?
-    authenticate_user?
+    
     role_description_id = User.find_by(id: session[:user_id]).role_description_id
 
     privilege = JSON.parse(RoleDescription.find(role_description_id).privilege)

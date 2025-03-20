@@ -874,3 +874,14 @@ body {
     font-weight: bold;
     color: #8c52ff;
 }
+
+
+
+
+.chart-label {
+    text-align: center;
+}
+.chart-container {
+    display: inline-block;
+    margin-left: 60px;
+}

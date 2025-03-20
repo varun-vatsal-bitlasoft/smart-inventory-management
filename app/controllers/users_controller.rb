@@ -32,6 +32,17 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    if !is_admin? 
+      @products = Department.find(User.find(session[:user_id]).department_id).products
+    end
+
+    @department_total_products_price = Department.joins(:products)
+                                      .group("departments.name")
+                                      .sum("products.price")
+
+    @total_size_products = Product.joins(:inventories)
+                                  .group("products.name")
+                                  .sum("inventories.size")
   end
 
   def create 
@@ -105,6 +116,10 @@ class UsersController < ApplicationController
     end
     
   end 
+
+  def is_admin?
+    RoleDescription.find(User.find(session[:user_id]).role_description_id).name == "admin"
+  end
 
 end
 
