@@ -40,9 +40,14 @@ class ProductTransactionsController < ApplicationController
 
     if @product_transactions.save
       inven = Inventory.find(@id)
-      inven.update(size: size - params[:product_transaction][:size].to_i)
+      if params[:product_transaction][:in_going] == "1"
+        inven.update(size: size + params[:product_transaction][:size].to_i)
+      else
+        inven.update(size: size - params[:product_transaction][:size].to_i)
+      end
       flash[:notice] = "product_transactions successfully created!"
       redirect_to :controller => :product_transactions, :action => :show
+      return 
     else
       flash[:notice] = "Error creating inventory."
       redirect_to :controller => :inventories, :action => :show

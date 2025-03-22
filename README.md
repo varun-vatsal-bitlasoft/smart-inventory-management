@@ -22,8 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-
-user = User.new(username: "varun-vatsal", email: "varunvatsal963@gmail.com", mobile: 6202347066, department_id: 1, role_description_id: 1, password: "123456", password_confirmation: "123456")
-
-user.save
