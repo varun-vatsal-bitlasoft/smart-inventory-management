@@ -16,9 +16,11 @@
         <li><%= link_to "Product", '/products/show' %></li>
         <li><%= link_to "Inventories", '/inventories/show' %></li>
         <li><%= link_to "Transaction", '/product_transactions/show' %></li>
-        <li><%= link_to "Users", '/users/show' %></li>
-        <li><%= link_to "Department", '/department/show' %></li>
-        <li><%= link_to "roles", '/role_description/show' %></li>
+        <% if user_is_admin? %>
+          <li><%= link_to "Users", '/users/show' %></li>
+          <li><%= link_to "Department", '/department/show' %></li>
+          <li><%= link_to "roles", '/role_description/show' %></li>
+        <% end %>
         <li><%= link_to "Logout", '/users/logout' %></li>
     </ul>
 </nav>
