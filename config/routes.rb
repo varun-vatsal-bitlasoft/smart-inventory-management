@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'users/create'
   post 'users/create', to: "users#create"
   get 'users/delete/:id', to: "users#delete", as: "user_delete"
-  get 'users/update/:id', to: "users#update", as: "user_update_show"
+  get 'users/edit/:id', to: "users#edit", as: "user_edit"
   post 'users/update/:id', to: "users#update", as: "user_update"
   
 

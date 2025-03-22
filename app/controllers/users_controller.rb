@@ -36,6 +36,8 @@ class UsersController < ApplicationController
       @products = Department.find(User.find(session[:user_id]).department_id).products
     end
 
+
+
     @department_total_products_price = Department.joins(:products)
                                       .group("departments.name")
                                       .sum("products.price")
@@ -43,6 +45,10 @@ class UsersController < ApplicationController
     @total_size_products = Product.joins(:inventories)
                                   .group("products.name")
                                   .sum("inventories.size")
+
+    @products_transaction = Product.joins(:product_transactions)
+                                   .group("products.name")
+                                   .sum("product_transactions.size")
   end
 
   def create 
@@ -50,9 +56,8 @@ class UsersController < ApplicationController
     @roles = RoleDescription.all
     @user = User.new
     if request.post?
-      user = User.create(username: params[:user][:username], email: params[:user][:email], mobile: params[:user][:mobile], password: params[:user][:password], password_confirmation: params[:user][:confirm_password], department_id: params[:user][:department_id], role_description_id: params[:user][:role_description_id])
-
-      if user.valid? 
+      user = User.new(user_params)
+      if user.save 
         redirect_to :controller => :users, :action => :show, notice: "user created"
       else
         Rails.logger.error user.errors
@@ -61,18 +66,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def update 
-    @user = User.find_by(id: session[:user_id])
+  def edit 
+    @user = User.find_by(id: params[:id])
     @departments = Department.all 
     @roles = RoleDescription.all
-    if request.post?
-        res = @user.update(username: params[:username], email: params[:email], mobile: params[:mobile], password: params[:password], password_confirmation: params[:confirm_password], department_id: params[:department_id], role_description_id: params[:role_description_id])
+  end
 
-        if res 
-          redirect_to :controller => :users, :action => :show, notice: "user created"
-        else
-          redirect_to :controller => :users, :action => :update, notice: "pass a valid user"
-        end
+  def update
+    @user = User.find_by(id: params[:id])
+    if request.post?
+      res = @user.update(user_params)
+
+      if res 
+        redirect_to :controller => :users, :action => :show, notice: "user created"
+      else
+        redirect_to :controller => :users, :action => :update, notice: "pass a valid user"
+      end
     end
   end
 
@@ -91,7 +100,7 @@ class UsersController < ApplicationController
 
   def choose_layout
     case action_name
-    when "dashboard", "show", "create"
+    when "dashboard", "show", "create", "edit"
       "home_layout"
     when "login"
       "authentication_layout"
@@ -119,6 +128,10 @@ class UsersController < ApplicationController
 
   def is_admin?
     RoleDescription.find(User.find(session[:user_id]).role_description_id).name == "admin"
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :email, :mobile, :password, :password_confirmation, :department_id, :role_description_id)
   end
 
 end

@@ -25,7 +25,7 @@
                 <td><%= Department.find(user.department_id).name %></td>
                 <td><%= RoleDescription.find(user.role_description_id).name %></td>
                 <td>
-                    <%= link_to "Edit", '/users/update', class: "os-edit-button" %>
+                    <%= link_to "Edit", user_edit_path(id: user.id), class: "os-edit-button" %>
                     <%= link_to "Delete", user_delete_path(id: user.id), class: "os-delete-button" %>
                 </td>
             </tr>
