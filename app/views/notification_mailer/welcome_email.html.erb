@@ -1,0 +1,4 @@
+<h1>Welcome, <%= @user.username %>!</h1>
+<p>Thank you for signing up. to optistock</p>
+<p>Department: <%= Department.find(@user.department_id).name  %> </p>
+<p>Role: <%= RoleDescription.find(@user.role_description_id).name %> </p>

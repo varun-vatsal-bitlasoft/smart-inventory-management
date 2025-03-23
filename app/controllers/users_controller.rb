@@ -58,6 +58,7 @@ class UsersController < ApplicationController
     if request.post?
       user = User.new(user_params)
       if user.save 
+        NotificationMailer.welcome_email(user).deliver_now
         redirect_to :controller => :users, :action => :show, notice: "user created"
       else
         Rails.logger.error user.errors
