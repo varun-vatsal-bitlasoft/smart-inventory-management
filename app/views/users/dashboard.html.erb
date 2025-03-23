@@ -1,21 +1,24 @@
-<%= line_chart ProductTransaction.group_by_day(:transaction_date).sum(:size), ytitle: "total transaction"%>
+<%= line_chart @total_product_transaction, ytitle: "total transaction"%>
 <h4 class="chart-label">total transaction </h4>
 
 <div class="chart-container">
-    <%= line_chart Inventory.group_by_day(:expiry).sum(:size), width: "800px", height: "500px" %>
+    <%= line_chart @total_inventory_expiry, width: "800px", height: "500px" %>
     <h4 class="chart-label">expiry / inventory</h4>
 </div>
 
 
 <div class="chart-container">
-    <%= column_chart Product.group(:name).sum(:price), width: "800px", height: "500px", prefix: "$" %>
+    <%= column_chart @price_per_product, width: "800px", height: "500px", prefix: "$" %>
     <h4 class="chart-label">price / products</h4>
 </div>
 
-<div class="chart-container">
-    <%= column_chart @department_total_products_price, width: "800px", height: "500px", prefix: "$" %>
-    <h4 class="chart-label">total price / products</h4>
-</div>
+<% if @department_total_products_price %>
+    <div class="chart-container">
+        <%= column_chart @department_total_products_price, width: "800px", height: "500px", prefix: "$" %>
+        <h4 class="chart-label">total price / products</h4>
+    </div>
+<% end %>
+
 
 <div class="chart-container">
     <%= column_chart @total_size_products, width: "800px", height: "500px" %>

@@ -32,23 +32,42 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    if !is_admin? 
-      @products = Department.find(User.find(session[:user_id]).department_id).products
+    if is_admin?
+      @total_product_transaction = ProductTransaction.group_by_day(:transaction_date).sum(:size)
+
+      @total_inventory_expiry = Inventory.group_by_day(:expiry).sum(:size)
+
+      @price_per_product = Product.group(:name).sum(:price)
+        
+
+      @department_total_products_price = Department.joins(:products)
+                                        .group("departments.name")
+                                        .sum("products.price")
+                                        
+      @total_size_products = Product.joins(:inventories)
+                                    .group("products.name")
+                                    .sum("inventories.size")
+
+    else 
+
+      @total_product_transaction = ProductTransaction.joins(:product)
+                                  .where(products: { department_id: User.find(session["user_id"]).department_id })
+                                  .group_by_day(:transaction_date).sum(:size) 
+
+      @total_inventory_expiry = Inventory.joins(:product)
+                                .where(products: { department_id: User.find(session["user_id"]).department_id })
+                                .group_by_day(:expiry).sum(:size)
+
+      @price_per_product = Product.where(department_id: User.find(session["user_id"]).department_id)
+                                  .group(:name).sum(:price)
+
+      @total_size_products =  Inventory.joins(:product)
+                                       .where(products: { department_id: User.find(session["user_id"]).department_id })
+                                       .group("products.name")
+                                       .sum(:size)
+
+      
     end
-
-
-
-    @department_total_products_price = Department.joins(:products)
-                                      .group("departments.name")
-                                      .sum("products.price")
-
-    @total_size_products = Product.joins(:inventories)
-                                  .group("products.name")
-                                  .sum("inventories.size")
-
-    @products_transaction = Product.joins(:product_transactions)
-                                   .group("products.name")
-                                   .sum("product_transactions.size")
   end
 
   def create 
