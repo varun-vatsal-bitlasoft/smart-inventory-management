@@ -7,7 +7,7 @@ class NotificationMailer < ApplicationMailer
         mail(to: "varunvatsal963@gmail.com", subject: "welcome to optistock")
     end
 
-    def inventory_warning(inventory)
+    def low_inventory_warning(inventory)
         @inventory = inventory
         mail(to: "varunvatsal963@gmail.com", subject: "inventory warning!")
     end

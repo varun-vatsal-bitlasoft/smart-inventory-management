@@ -1,0 +1,8 @@
+:queues:
+  - default
+
+:scheduler:
+  :schedule:
+    inventory_check:
+      cron: "*/3 * * * *"  # Runs every 5 minutes
+      class: "InventoryCheckJob"

@@ -27,9 +27,12 @@ class ProductTransactionsController < ApplicationController
     size = Inventory.find(@id).size.to_i
     @product_id = Inventory.find(@id).product_id
 
-    if params[:product_transaction][:size].to_i > size 
-      flash[:notice] = "size should be less that or equal to inventory size"
-      redirect_to :controller => :product_transactions, :action => :create_form
+    if params[:product_transaction][:in_going] == "0"
+      if params[:product_transaction][:size].to_i > size 
+        flash[:notice] = "size should be less that or equal to inventory size"
+        redirect_to :controller => :product_transactions, :action => :create_form
+        return 
+      end
     end
 
     @product_transactions = ProductTransaction.new(size: params[:product_transaction][:size], transaction_date: params[:product_transaction][:transaction_date], price: params[:product_transaction][:price], in_going: params[:product_transaction][:in_going] == "1" ? true : false, product_id: @product_id, inventory_id: @id)
@@ -51,6 +54,7 @@ class ProductTransactionsController < ApplicationController
     else
       flash[:notice] = "Error creating inventory."
       redirect_to :controller => :inventories, :action => :show
+      return 
     end
  
   end
