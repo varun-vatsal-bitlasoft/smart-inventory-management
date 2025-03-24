@@ -17,6 +17,11 @@
         <%= column_chart @department_total_products_price, width: "800px", height: "500px", prefix: "$" %>
         <h4 class="chart-label">total price / products</h4>
     </div>
+<% else %>
+    <div class="chart-container">
+    <%= pie_chart Product.where(department_id: User.find(session["user_id"]).department_id).group(:name).sum(:price), width: "800px", height: "500px" %>
+        <h4 class="chart-label">total price / products</h4>
+    </div>
 <% end %>
 
 
