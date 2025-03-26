@@ -1,2 +1,3 @@
 <h1>inventory is running low</h1>
-<p>Inventory id: <%= @inventory.id %> </p>
+<p>Inventory ID: <%= @inventory.id %> </p>
+<p>inventory for product <%= Product.find(@inventory.product_id).name %> is running low </p>

@@ -1,20 +1,20 @@
-<%= line_chart @total_product_transaction, ytitle: "total transaction"%>
+<%= line_chart @total_product_transaction, ytitle: "total transaction", xtitle: "date"%>
 <h4 class="chart-label">total transaction </h4>
 
 <div class="chart-container">
-    <%= line_chart @total_inventory_expiry, width: "800px", height: "500px" %>
+    <%= line_chart @total_inventory_expiry, width: "800px", height: "500px", ytitle: "inventory count", xtitle: "date" %>
     <h4 class="chart-label">expiry / inventory</h4>
 </div>
 
 
 <div class="chart-container">
-    <%= column_chart @price_per_product, width: "800px", height: "500px", prefix: "$" %>
+    <%= column_chart @price_per_product, width: "800px", height: "500px", prefix: "$", xtitle: "product name", ytitle: "price" %>
     <h4 class="chart-label">price / products</h4>
 </div>
 
 <% if @department_total_products_price %>
     <div class="chart-container">
-        <%= column_chart @department_total_products_price, width: "800px", height: "500px", prefix: "$" %>
+        <%= column_chart @department_total_products_price, width: "800px", height: "500px", prefix: "$", xtitle: "department", ytitle: "total price" %>
         <h4 class="chart-label">total price / products</h4>
     </div>
 <% else %>
@@ -26,7 +26,7 @@
 
 
 <div class="chart-container">
-    <%= column_chart @total_size_products, width: "800px", height: "500px" %>
+    <%= column_chart @total_size_products, width: "800px", height: "500px", xtitle: "inventory", ytitle: "size" %>
     <h4 class="chart-label">total size / products</h4>
 </div>
 
