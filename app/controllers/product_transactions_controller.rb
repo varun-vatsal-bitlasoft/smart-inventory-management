@@ -19,6 +19,10 @@ class ProductTransactionsController < ApplicationController
 
   def create_form
     @id = params[:id]
+    if Inventory.find(@id).size == 0
+      redirect_to :controller => :inventories, :action => :show
+      return
+    end
     @product_transactions = ProductTransaction.new
   end
 
@@ -27,12 +31,20 @@ class ProductTransactionsController < ApplicationController
     size = Inventory.find(@id).size.to_i
     @product_id = Inventory.find(@id).product_id
 
+   
+
     if params[:product_transaction][:in_going] == "0"
       if params[:product_transaction][:size].to_i > size 
         flash[:notice] = "size should be less that or equal to inventory size"
         redirect_to :controller => :product_transactions, :action => :create_form
         return 
       end
+    end
+
+    if Inventory.find(@id).expiry < params[:product_transaction][:transaction_date].to_date
+      flash[:notice] = "inventory is expired"
+      redirect_to :controller => :product_transactions, :action => :create_form
+      return
     end
 
     @product_transactions = ProductTransaction.new(size: params[:product_transaction][:size], transaction_date: params[:product_transaction][:transaction_date], price: params[:product_transaction][:price], in_going: params[:product_transaction][:in_going] == "1" ? true : false, product_id: @product_id, inventory_id: @id)

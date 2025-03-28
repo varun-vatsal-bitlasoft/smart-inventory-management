@@ -27,6 +27,12 @@ class InventoriesController < ApplicationController
 
     @inventory.valid?
 
+    if params[:inventory][:expiry].to_date < Time.now.to_date
+      flash[:notice] = "expiry date should not be less than current date"
+      redirect_to :controller => :inventories, :action => :create_form
+      return
+    end
+
     Rails.logger.error @inventory.errors.full_messages
 
     if @inventory.save

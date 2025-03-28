@@ -17,9 +17,11 @@ class UsersController < ApplicationController
       if user&.authenticate(params[:password])
         session[:user_id] = user.id
         redirect_to :controller => :users, :action => :dashboard, notice: "Logged in successfully!"
+        return
       else 
         flash[:alert] = "invalid username or password"
         redirect_to :controller => :users, :action => :login  
+        return
       end
 
     end
